@@ -12,6 +12,8 @@ Vale ressaltar que, por questões de organização, eu dividi o presente texto e
 
 * Tópico 1: Levantamento de requisitos
 * Tópico 2: Git e GitHub
+* Tópico 3: Desenvolvimento da API REST
+    * Subtópico 3.1: Spring Initializr e Spring Tool Suite
 
 ## Tópico 1: Levantamento de requisitos
 
@@ -39,4 +41,21 @@ Através do Git eu realizei o controle de versão dos arquivos relacionados ao p
 
 Vale destacar que, em relação ao projeto Lista de tarefas, eu criei dois repositórios dentro da minha conta do GitHub. O primeiro repositório se chama projeto-lista-de-tarefas-api-rest, sendo que tal repositório contém os arquivos relacionados com a API REST do projeto Lista de tarefas. O segundo repositório se chama projeto-lista-de-tarefas-frontend, sendo que tal repositório contém os arquivos relacionados com o front-end da aplicação web do projeto Lista de tarefas.
 
-O presente texto está localizado dentro do repositório chamado projeto-lista-de-tarefas-api. Já o repositório chamado projeto-lista-de-tarefas-frontend pode ser acessado através do link <https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend>.
+O presente texto está localizado dentro do repositório chamado projeto-lista-de-tarefas-api-rest. Já o repositório chamado projeto-lista-de-tarefas-frontend pode ser acessado através do link <https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend>.
+
+## Tópico 3: Desenvolvimento da API REST
+
+Os subtópicos seguintes relatam as etapas que eu segui para desenvolver a API REST do projeto Lista de tarefas.
+
+### Subtópico 3.1: Spring Initializr e Spring Tool Suite
+
+Eu acessei o site Spring Initializr e promovi as configurações que podem ser vistas na imagem abaixo.
+
+Sobre a imagem acima, vale destacar que:
+
+* Eu escolhi a dependência Spring Web porque ela me permite lidar com requisições HTTP.
+* Eu escolhi a dependência Spring Data JPA porque ela facilita a realização do mapeamento objeto-relacional. Além disso, através da referida dependência, eu conto com métodos capazes de criar, ler, atualizar e remover registros de um banco de dados.
+* Eu escolhi a dependência PostgreSQL Driver porque ela permite que a API REST se comunique com um banco de dados criado no PostgreSQL.
+* Eu escolhi a dependência H2 Database porque ela me permite trabalhar com um banco de dados em memória.
+
+Após promover as configurações mostradas na imagem acima, o Spring Initializr me gerou uma pasta, chamada projetolistadetarefasapirest. Eu importei essa pasta para o meu workspace do Spring Tool Suite, IDE que eu utilizei para desenvolver a API REST. Foi dentro da pasta projetolistadetarefasapirest que eu incluí os arquivos que iriam compor a API REST.
