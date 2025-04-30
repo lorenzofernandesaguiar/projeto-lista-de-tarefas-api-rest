@@ -15,6 +15,7 @@ Vale ressaltar que, por questões de organização, eu dividi o presente texto e
 * Tópico 3: Desenvolvimento da API REST
     * Subtópico 3.1: Spring Initializr e Spring Tool Suite
     * Subtópico 3.2: Classe Tarefa
+    * Subtópico 3.3: Classe TarefaDTO
 
 ## Tópico 1: Levantamento de requisitos
 
@@ -63,11 +64,13 @@ Sobre a imagem acima, vale destacar que:
 
 Após promover as configurações mostradas na imagem acima, o Spring Initializr me gerou uma pasta, chamada projetolistadetarefasapirest. Eu importei essa pasta para o meu workspace do Spring Tool Suite, IDE que eu utilizei para desenvolver a API REST. Foi dentro da pasta projetolistadetarefasapirest que eu incluí os arquivos que iriam compor a API REST.
 
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-api-rest/commit/694943049dc62b412656879942934facaa1f88cf) para ver o commit relacionado com a adição de arquivos básicos dentro do presente repositório. Vale destacar que esses arquivos estão relacionados com a API REST do projeto Lista de tarefas. Também vale destacar que esses arquivos foram gerados pelo Spring Initializr.
+
 ### Subtópico 3.2: Classe Tarefa
 
 Dentro do pacote principal da pasta projetolistadetarefasapirest, eu criei o pacote entities contendo a classe Tarefa.
 
-[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-api-rest/blob/main/src/main/java/com/projetolistadetarefasapirest/entities/Tarefa.java) para ver o código Java que eu escrevi para a classe Tarefa.
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-api-rest/blob/main/src/main/java/com/projetolistadetarefasapirest/entities/Tarefa.java) para ver o código Java que eu escrevi para a classe Tarefa. Vale destacar que o código Java que eu escrevi para a classe Tarefa está hospedado no presente repositório.
 
 Sobre o código Java que eu escrevi para a classe Tarefa, vale destacar que:
 
@@ -77,3 +80,18 @@ Sobre o código Java que eu escrevi para a classe Tarefa, vale destacar que:
 * Por meio da anotação @Column(nullable = false, length = 25), eu indiquei que a coluna descricao não pode ser nula e que seu tamanho é 25. No caso da coluna concluida, eu simplesmente indiquei que ela não pode ser nula.
 * Eu criei os métodos getters e setters para todos os atributos da classe Tarefa. Isso vai de encontro ao pilar encapsulamento da programação orientada a objetos.
 * Eu sobrescrevi os métodos hashCode e equals para que eles levassem em consideração somente o atributo id.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-api-rest/commit/9260dc702bb5aa31a0868247b8b244ce94bf4c1c) para ver o commit relacionado com a adição da classe Tarefa dentro do presente repositório.
+
+### Subtópico 3.3: Classe TarefaDTO
+
+Dentro do pacote principal da pasta projetolistadetarefasapirest, eu criei o pacote dto contendo a classe TarefaDTO.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-api-rest/blob/main/src/main/java/com/projetolistadetarefasapirest/dto/TarefaDTO.java) para ver o código Java que eu escrevi para a classe TarefaDTO. Vale destacar que o código Java que eu escrevi para a classe TarefaDTO está hospedado no presente repositório.
+
+Sobre o código Java que eu escrevi para a classe TarefaDTO, vale destacar que:
+
+* A classe TarefaDTO funciona como o DTO da entidade Tarefa. Isso significa que TarefaDTO somente irá conter os atributos de Tarefa que serão importantes para a comunicação entre a API REST e o cliente. No caso do projeto Lista de tarefas, todos os atributos de Tarefa são importantes para a comunicação entre a API REST e o cliente.
+* Eu criei um construtor que recebe como parâmetro um objeto da classe Tarefa. A função desse construtor é permitir a conversão de um objeto da classe Tarefa para um objeto da classe TarefaDTO.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-api-rest/commit/6a4cfcb0dcce4abdd2a47d169019d7ce17c86dbc) para ver o commit relacionado com a adição da classe TarefaDTO dentro do presente repositório.
