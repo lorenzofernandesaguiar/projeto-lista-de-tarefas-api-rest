@@ -14,6 +14,7 @@ Vale ressaltar que, por questões de organização, eu dividi o presente texto e
 * Tópico 2: Git e GitHub
 * Tópico 3: Desenvolvimento da API REST
     * Subtópico 3.1: Spring Initializr e Spring Tool Suite
+    * Subtópico 3.2: Classe Tarefa
 
 ## Tópico 1: Levantamento de requisitos
 
@@ -61,3 +62,18 @@ Sobre a imagem acima, vale destacar que:
 * Eu escolhi a dependência H2 Database porque ela me permite trabalhar com um banco de dados em memória.
 
 Após promover as configurações mostradas na imagem acima, o Spring Initializr me gerou uma pasta, chamada projetolistadetarefasapirest. Eu importei essa pasta para o meu workspace do Spring Tool Suite, IDE que eu utilizei para desenvolver a API REST. Foi dentro da pasta projetolistadetarefasapirest que eu incluí os arquivos que iriam compor a API REST.
+
+### Subtópico 3.2: Classe Tarefa
+
+Dentro do pacote principal da pasta projetolistadetarefasapirest, eu criei o pacote entities contendo a classe Tarefa.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-api-rest/blob/main/src/main/java/com/projetolistadetarefasapirest/entities/Tarefa.java) para ver o código Java que eu escrevi para a classe Tarefa.
+
+Sobre o código Java que eu escrevi para a classe Tarefa, vale destacar que:
+
+* Por meio da anotação @Entity, eu indiquei que a classe Tarefa é uma entidade, ou seja, é uma classe que representa uma tabela no banco de dados. O nome dessa tabela é tarefas, conforme eu indiquei por meio da anotação @Table(name="tarefas").
+* A classe Tarefa possui os atributos id, descricao e concluida. De forma análoga, no banco de dados, a tabela tarefas possui as colunas id, descricao e concluida.
+* Por meio das anotações @Id e @GeneratedValue(strategy = GenerationType.IDENTITY), eu indiquei que a coluna id é a chave primária e o seu valor será gerado por auto-incremento.
+* Por meio da anotação @Column(nullable = false, length = 25), eu indiquei que a coluna descricao não pode ser nula e que seu tamanho é 25. No caso da coluna concluida, eu simplesmente indiquei que ela não pode ser nula.
+* Eu criei os métodos getters e setters para todos os atributos da classe Tarefa. Isso vai de encontro ao pilar encapsulamento da programação orientada a objetos.
+* Eu sobrescrevi os métodos hashCode e equals para que eles levassem em consideração somente o atributo id.
