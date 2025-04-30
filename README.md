@@ -51,6 +51,8 @@ Os subtópicos seguintes relatam as etapas que eu segui para desenvolver a API R
 
 Eu acessei o site Spring Initializr e promovi as configurações que podem ser vistas na imagem abaixo.
 
+![Configurações promovidas dentro do Spring Initializr](https://github.com/user-attachments/assets/6b452eae-52fe-458c-83f1-241dcd8f7a2b)
+
 Sobre a imagem acima, vale destacar que:
 
 * Eu escolhi a dependência Spring Web porque ela me permite lidar com requisições HTTP.
