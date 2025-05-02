@@ -26,6 +26,42 @@ Vale ressaltar que, por questões de organização, eu dividi o presente texto e
     * Subtópico 4.2: Classe TarefaServiceTest
     * Subtópico 4.3: Classe TarefaControllerTest
     * Subtópico 4.4: Rodando os testes unitários para validar a API REST
+* Tópico 5: Desenvolvimento do front-end da aplicação web
+    * Subtópico 5.1: Angular CLI e Visual Studio Code
+    * Subtópico 5.2: Arquivo index.html
+    * Subtópico 5.3: Arquivo styles.css
+    * Subtópico 5.4: Arquivo tarefa.ts
+    * Subtópico 5.5: Serviço e componentes
+    * Subtópico 5.6: Arquivo app.routes.ts
+    * Subtópico 5.7: Arquivo app.config.ts
+    * Subtópico 5.8: Arquivo main.ts
+    * Subtópico 5.9: Arquivo app.component.ts
+    * Subtópico 5.10: Arquivo app.component.html
+    * Subtópico 5.11: Arquivo app.component.css
+    * Subtópico 5.12: Arquivo tarefa.service.ts
+    * Subtópico 5.13: Arquivo lista-de-tarefas.component.ts
+    * Subtópico 5.14: Arquivo lista-de-tarefas.component.html
+    * Subtópico 5.15: Arquivo lista-de-tarefas.component.css
+    * Subtópico 5.16: Arquivo adicionar-tarefa.component.ts
+    * Subtópico 5.17: Arquivo adicionar-tarefa.component.html
+    * Subtópico 5.18: Arquivo adicionar-tarefa.component.css
+    * Subtópico 5.19: Arquivo editar-tarefa.component.ts
+    * Subtópico 5.20: Arquivo editar-tarefa.component.html
+    * Subtópico 5.21: Arquivo editar-tarefa.component.css
+    * Subtópico 5.22: Arquivo excluir-tarefa.component.ts
+    * Subtópico 5.23: Arquivo excluir-tarefa.component.html
+    * Subtópico 5.24: Arquivo excluir-tarefa.component.css
+* Tópico 6: Testes unitários para validar o front-end da aplicação web
+    * Subtópico 6.1: Arquivo app.component.spec.ts
+    * Subtópico 6.2: Arquivo tarefa.spec.ts
+    * Subtópico 6.3: Arquivo db.ts
+    * Subtópico 6.4: Arquivo mocktarefaservice.ts
+    * Subtópico 6.5: Arquivo tarefa.service.spec.ts
+    * Subtópico 6.6: Arquivo lista-de-tarefas.component.spec.ts
+    * Subtópico 6.7: Arquivo adicionar-tarefa.component.spec.ts
+    * Subtópico 6.8: Arquivo editar-tarefa.component.spec.ts
+    * Subtópico 6.9: Arquivo excluir-tarefa.component.spec.ts
+    * Subtópico 6.10: Rodando os testes unitários para validar o front-end da aplicação web
 
 ## Tópico 1: Levantamento de requisitos
 
@@ -63,7 +99,7 @@ Os subtópicos seguintes relatam as etapas que eu segui para desenvolver a API R
 
 Eu acessei o site Spring Initializr e promovi as configurações que podem ser vistas na imagem abaixo.
 
-![Configurações promovidas dentro do Spring Initializr](https://github.com/user-attachments/assets/6b452eae-52fe-458c-83f1-241dcd8f7a2b)
+![Essa imagem mostra as configurações promovidas dentro do Spring Initializr](https://github.com/user-attachments/assets/6b452eae-52fe-458c-83f1-241dcd8f7a2b)
 
 Sobre a imagem acima, vale destacar que:
 
@@ -241,10 +277,522 @@ Sobre o código Java que eu escrevi para a classe TarefaControllerTest, vale des
 * Eu anotei todos os métodos da classe TarefaControllerTest com @Test. Assim, eu indiquei que todos os métodos de TarefaControllerTest são métodos de teste.
 * Eu escrevi comentários dentro dos métodos da classe TarefaControllerTest. Fiz isso para que o código se torne mais compreensível.
 
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-api-rest/commit/4074c37ad20924b01ffdb1461aa75eff7ca26315) para ver o commit relacionado com a adição da classe TarefaControllerTest dentro do presente repositório.
+
 ### Subtópico 4.4: Rodando os testes unitários para validar a API REST
 
 Dentro do meu workspace do Spring Tool Suite, eu cliquei com o botão direito do mouse sobre a pasta projetolistadetarefasapirest e selecionei Run As JUnit Test. Feito isso, os testes unitários escritos ao longo dos tópicos anteriores começaram a rodar. O perfil que foi ativado no momento em que esses testes estavam rodando foi o perfil default.
 
 Vale ressaltar que foi necessária uma conexão com um banco de dados para a realização dos testes unitários relativos ao repositório da API REST. Sabendo disso, eu anotei a classe TarefaRepositoryTest com @DataJpaTest. Assim, eu fiz com que o Spring Boot automaticamente configurasse um banco de dados incorporado para o repositório da API REST. Esse banco de dados foi o H2 Database.
+
+Todos os testes obtiveram sucesso, conforme pode ser visto no relatório de testes abaixo.
+
+![Essa imagem mostra que foram bem sucedidos os testes unitários que devem validar a API REST](https://github.com/user-attachments/assets/aebfc4e6-cda5-4914-b16d-5716bf756033)
+
+## Tópico 5: Desenvolvimento do front-end da aplicação web
+
+Os subtópicos seguintes relatam as etapas que eu segui para desenvolver o front-end da aplicação web do projeto Lista de tarefas.
+
+### Subtópico 5.1: Angular CLI e Visual Studio Code
+
+Eu instalei o Angular CLI em meu computador, pois o Angular CLI me fornece comandos úteis na hora de se desenvolver com Angular. Um desses comandos é o ng new.
+
+Desse modo, dentro de uma ferramenta de linha de comando, eu digitei o comando ng new projeto-lista-de-tarefas-frontend. Assim, foi criada uma pasta chamada projeto-lista-de-tarefas-frontend. Eu abri a pasta projeto-lista-de-tarefas-frontend dentro do Visual Studio Code, IDE que eu utilizei para desenvolver o front-end da aplicação web. Foi dentro dessa pasta que eu incluí os arquivos que iriam compor o front-end da aplicação web.
+
+Vale lembrar que, ao trabalhar com Angular, eu me deparei com o conceito de componentes. Para o Angular, componentes são o bloco de construção mais básico e podem ser compostos por três arquivos. O primeiro arquivo é um arquivo TypeScript que contém uma classe TypeScript responsável pela lógica do componente. O segundo arquivo é um arquivo HTML que define o template do componente, ou seja, o conteúdo que será apresentado ao usuário. Por fim, o terceiro arquivo é um arquivo CSS que define os estilos que serão aplicados ao template.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/2136e612f104e4df5f60198e4b42b0e5f8b2015d) para ver o commit relacionado com a adição de arquivos básicos dentro do meu repositório chamado projeto-lista-de-tarefas-frontend. Vale destacar que esses arquivos estão relacionados com o front-end da aplicação web do projeto Lista de tarefas. Também vale destacar que esses arquivos foram gerados pelo Angular CLI.
+
+### Subtópico 5.2: Arquivo index.html
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src. Essa última pasta já contava com o arquivo index.html.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/index.html) para ver as alterações que eu promovi dentro do arquivo index.html. Vale destacar que o arquivo index.html está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo index.html, vale destacar que:
+
+* Eu alterei o atributo lang da tag html para pt-br.
+* Eu decidi usar a fonte Noto Sans em todo o front-end da aplicação web do projeto Lista de tarefas. Para isso, eu fui até o Google Fonts, procurei por essa fonte, copiei o código que me foi fornecido e o colei no final da tag head.
+* Dentro da tag body há uma referência ao componente AppComponent. Desse modo, o conteúdo do template do referido componente será incluído dentro da tag body do arquivo index.html.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/c82825be01d5a004f1539613a117f333dece92a3) para ver o commit relacionado com a alteração do arquivo index.html dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.3: Arquivo styles.css
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src. Essa última pasta já contava com o arquivo styles.css.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/styles.css) para ver as alterações que eu promovi dentro do arquivo styles.css. Vale destacar que o arquivo styles.css está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo styles.css, vale destacar que:
+
+* Através de propriedades personalizadas, eu atribuí nomes de fácil entendimento às cores que serão usadas com frequência no front-end da aplicação web.
+* Eu indiquei que a fonte Noto Sans é a fonte a ser usada pelo front-end da aplicação web.
+* Eu indiquei que os botões do front-end da aplicação web deverão ter uma borda sólida e com espessura de 1 pixel. Além disso, será de 10 pixels a distância entre o conteúdo de um botão e as bordas desse mesmo botão.
+* Eu indiquei que, para os botões pertencentes à classe confirmar, tanto o fundo quanto a borda serão da cor preta.
+* Eu indiquei que, quando o mouse estiver posicionado sobre um botão pertencente à classe confirmar, o referido botão terá o fundo da cor branca e terá o texto da cor preta.
+* Eu indiquei que, para um botão que estiver desabilitado, tanto o fundo quanto a borda serão da cor cinza. Se o usuário posicionar o mouse sobre um botão desabilitado, o cursor mostrará que o clique não é permitido.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/5b892e2d48e1f89caccfed4e1d86d886ac68c855) para ver o commit relacionado com a alteração do arquivo styles.css dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.4: Arquivo tarefa.ts
+
+Eu abri um terminal integrado dentro do Visual Studio Code. Nesse terminal, eu digitei o comando ng generate class models/tarefa. Foram gerados os arquivos tarefa.ts e tarefa.spec.ts. Para acessar o arquivo tarefa.ts, eu, dentro da pasta projeto-lista-de-tarefas-frontend, fui até a pasta src e, depois, eu fui até a pasta models.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/models/tarefa.ts) para ver as alterações que eu promovi dentro do arquivo tarefa.ts. Vale destacar que o arquivo tarefa.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo tarefa.ts, vale destacar que:
+
+* Eu criei a classe Tarefa, a qual possui as propriedades id, descricao e concluida.
+* Eu criei um método construtor para que eu, ao instanciar um objeto da classe Tarefa, já informe quais os valores de todos as propriedades da referida classe.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/1ca5dbc63af5dc3990cad318d6cdf238f7834c88) para ver o commit relacionado com a adição do arquivo tarefa.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.5: Serviço e componentes
+
+Para o front-end da aplicação web, eu precisei criar o serviço TarefaService, o componente ListaDeTarefasComponent, o componente AdicionarTarefaComponent, o componente EditarTarefaComponent e o componente ExcluirTarefaComponent. Sobre isso, vale destacar que:
+
+* Para criar o serviço TarefaService, eu abri um terminal integrado dentro do Visual Studio Code e digitei o comando ng generate service services/tarefa. Desse modo, foram criados os arquivos tarefa.service.ts e tarefa.service.spec.ts.
+* Para criar o componente ListaDeTarefasComponent, eu abri um terminal integrado dentro do Visual Studio Code e digitei o comando ng generate component pages/lista-de-tarefas. Desse modo, foram criados os arquivos lista-de-tarefas.component.ts, lista-de-tarefas.component.spec.ts, lista-de-tarefas.component.html e lista-de-tarefas.component.css.
+* Para criar o componente AdicionarTarefaComponent, eu abri um terminal integrado dentro do Visual Studio Code e digitei o comando ng generate component pages/adicionar-tarefa. Desse modo, foram criados os arquivos adicionar-tarefa.component.ts, adicionar-tarefa.component.spec.ts, adicionar-tarefa.component.html e adicionar-tarefa.component.css.
+* Para criar o componente EditarTarefaComponent, eu abri um terminal integrado dentro do Visual Studio Code e digitei o comando ng generate component pages/editar-tarefa. Desse modo, foram criados os arquivos editar-tarefa.component.ts, editar-tarefa.component.spec.ts, editar-tarefa.component.html e editar-tarefa.component.css.
+* Para criar o componente ExcluirTarefaComponent, eu abri um terminal integrado dentro do Visual Studio Code e digitei o comando ng generate component pages/excluir-tarefa. Desse modo, foram criados os arquivos excluir-tarefa.component.ts, excluir-tarefa.component.spec.ts, excluir-tarefa.component.html e excluir-tarefa.component.css.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/7f81b2791c8e7d2835744b7059830d75bb52baff) para ver o commit relacionado com a adição do serviço TarefaService dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/541b8c95ead1a770cafc4501dc87cbfb5b065051) para ver o commit relacionado com a adição do componente ListaDeTarefasComponent dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/76f3bc131d9b4d3009b631e840e0aa43810c7d19) para ver o commit relacionado com a adição do componente AdicionarTarefaComponent dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/742f1ca86bb1983e82c3c6903be743766ed0062a) para ver o commit relacionado com a adição do componente EditarTarefaComponent dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/57eb26479306af1f5da9db0cc498cc056ebe1193) para ver o commit relacionado com a adição do componente EXcluirTarefaComponent dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.6: Arquivo app.routes.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Essa última pasta já contava com o arquivo app.routes.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/app.routes.ts) para ver as alterações que eu promovi dentro do arquivo app.routes.ts. Vale destacar que o arquivo app.routes.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo app.routes.ts, vale destacar que:
+
+* O arquivo app.routes.ts exporta a constante routes. Dentro dessa constante, eu defini as rotas do front-end da aplicação web.
+* Cabe ressaltar que o front-end da aplicação web será rodado no meu próprio computador. Desse modo, o front-end da aplicação web poderá ser acessado pela URL http://localhost:4200.
+* Eu indiquei que, quando o usuário acessar a URL http://localhost:4200, deve ser instanciado o componente ListaDeTarefasComponent. Para a referida URL, o título da página será Lista de tarefas.
+* Eu indiquei que, quando o usuário acessar a URL http://localhost:4200/adicionar-tarefa, deve ser instanciado o componente AdicionarTarefaComponent. Para a referida URL, o título da página será Adicionar tarefa.
+* Eu indiquei que, quando o usuário acessar a URL que segue o modelo http://localhost:4200/editar/:id, deve ser instanciado o componente EditarTarefaComponent. Na prática, o trecho :id corresponderá a um número que representa o id de uma determinada tarefa. Para a URL que segue o referido modelo, o título da página será Editar tarefa.
+* Eu indiquei que, quando o usuário acessar a URL que segue o modelo http://localhost:4200/excluir/:id, deve ser instanciado o componente ExcluirTarefaComponent. Na prática, o trecho :id corresponderá a um número que representa o id de uma determinada tarefa. Para a URL que segue o referido modelo, o título da página será Excluir tarefa.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/121666031571c834aa1a2018a23edf307a87ea47) para ver o commit relacionado com a alteração do arquivo app.routes.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.7: Arquivo app.config.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Essa última pasta já contava com o arquivo app.config.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/app.config.ts) para ver as alterações que eu promovi dentro do arquivo app.config.ts. Vale destacar que o arquivo app.config.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo app.config.ts, vale destacar que:
+
+* O arquivo app.config.ts exporta a constante appConfig. A constante appConfig contém uma lista com providers que devem estar disponíveis para o componente raiz e para todos os filhos desse componente raiz.
+* Dentro da lista com providers, eu adicionei a função provideRouter. Essa função permite configurar um conjunto de rotas para que haja a navegação entre componentes dentro do front-end da aplicação web. Eu defini esse conjunto de rotas dentro da constante routes, conforme pode ser visto no arquivo app.routes.ts. Por isso, a constante routes é passada como parâmetro da função provideRouter.
+* Dentro da lista com providers, eu adicionei a função provideProtractorTestingSupport. Essa função adiciona o serviço Testability para o front-end da aplicação web.
+* Dentro da lista com providers, eu adicionei a função provideHttpClient. Essa função permite configurar o serviço do Angular chamado HttpClient e o faz estar disponível para injeção de dependência.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/30c98b0f83ddf25071d408c16e50468d7d6957d7) para ver o commit relacionado com a alteração do arquivo app.config.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.8: Arquivo main.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src. Essa última pasta já contava com o arquivo main.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/main.ts) para ver o arquivo main.ts. Vale destacar que o arquivo main.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Eu não realizei alterações no arquivo main.ts. Apesar disso, eu gostaria de destacar que:
+
+* O método bootstrapApplication realiza a operação de bootstrap do front-end da aplicação web.
+* O componente AppComponent é o primeiro parâmetro do método bootstrapApplication. Isso indica que AppComponent deve ser renderizado como componente raiz do front-end da aplicação web.
+* A constante appConfig, exportada pelo arquivo app.config.ts, é o segundo parâmetro do método bootstrapApplication. Isso indica que appConfig contém um conjunto de opções de configuração que devem estar disponíveis durante a operação de bootstrap do front-end da aplicação web.
+
+### Subtópico 5.9: Arquivo app.component.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Essa última pasta já contava com o arquivo app.component.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/app.component.ts) para ver as alterações que eu promovi dentro do arquivo app.component.ts. Vale destacar que o arquivo app.component.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo app.component.ts, vale destacar que:
+
+* O decorator @Component indica que a classe AppComponent é um componente. Dentro do referido decorator estão definidos o seletor do componente, as dependências que devem ser importadas para o template do componente, o local onde está salvo o arquivo HTML correspondente ao template do componente e o local onde está salvo o arquivo CSS correspondente aos estilos do componente.
+* A classe RouterOutlet é importada para o template do componente AppComponent. Desse modo, eu posso usar a diretiva router-outlet dentro do referido template.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/36b4d848c35f01c4bbdc8ec3e985472a8f5f4aa6) para ver o commit relacionado com a alteração do arquivo app.component.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/a9aa258f922922f80ed4a3f8fa91653acb714d6e) para ver o commit relacionado com a adição de uma imagem dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.10: Arquivo app.component.html
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Essa última pasta já contava com o arquivo app.component.html.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/app.component.html) para ver as alterações que eu promovi dentro do arquivo app.component.html. Vale destacar que o arquivo app.component.html está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo app.component.html, vale destacar que:
+
+* Eu utilizei tags semânticas para descrever o significado do conteúdo presente no template do componente AppComponent. Desse modo, eu dividi o referido template em cabeçalho, conteúdo principal e rodapé.
+* O cabeçalho é composto por uma imagem e o texto Lista de tarefas.
+* O rodapé é composto pelo texto Desenvolvido por Lorenzo Fernandes Aguiar.
+* O cabeçalho e o rodapé estarão presentes em todas as URLs acessadas pelo usuário.
+* Por meio da diretiva router-outlet, eu indiquei que o conteúdo principal mudará conforme a URL acessada pelo usuário.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/a764749424f3360886991c53ce525eb69e4dc2fa) para ver o commit relacionado com a alteração do arquivo app.component.html dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.11: Arquivo app.component.css
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Essa última pasta já contava com o arquivo app.component.css.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/app.component.css) para ver as alterações que eu promovi dentro do arquivo app.component.css. Vale destacar que o arquivo app.component.css está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo app.component.css, vale destacar que:
+
+* Eu indiquei que, entre o cabeçalho e o conteúdo principal, existe uma linha horizontal sólida, de cor preta e com espessura igual a 1 pixel. Uma linha semelhante separa o conteúdo principal e o rodapé.
+* Eu indiquei que, dentro do cabeçalho, a imagem e o texto Lista de tarefas ficam um ao lado do outro.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/55ec12d462bf6b2a5c5c8cd2da7f6754407f874b) para ver o commit relacionado com a alteração do arquivo app.component.css dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.12: Arquivo tarefa.service.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src. Em seguida, eu fui até a pasta app e, depois, eu fui até a pasta services. Nessa última pasta, eu acessei o arquivo tarefa.service.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/services/tarefa.service.ts) para ver as alterações que eu promovi dentro do arquivo tarefa.service.ts. Vale destacar que o arquivo tarefa.service.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo tarefa.service.ts, vale destacar que:
+
+* A classe TarefaService é um serviço. Todos os métodos dessa classe, com exceção do método manipularErro, constroem as requisições HTTP que serão enviadas para a API REST.
+* O decorator @Injectable indica que o serviço TarefaService pode ser injetado como uma dependência.
+* A propriedade url contém a URL básica para a qual a API REST espera receber requisições HTTP.
+* A propriedade httpOptions constrói um cabeçalho HTTP, de modo que o Content-Type é igual a application/json.
+* Eu utilizei o método constructor para realizar a injeção de dependência. Desse modo, o Angular injetará a dependência, que nesse caso é a classe HttpClient, dentro do serviço TarefaService. A classe HttpClient é muito importante, pois ela conta com métodos para executar requisições HTTP.
+* Eu escrevi comentários dentro dos métodos do serviço TarefaService. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/36a2c4b98aa44fb5f3cde2b50f17769446ec31ff) para ver o commit relacionado com a alteração do arquivo tarefa.service.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.13: Arquivo lista-de-tarefas.component.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta lista-de-tarefas. Nessa última pasta, eu acessei o arquivo lista-de-tarefas.component.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/lista-de-tarefas/lista-de-tarefas.component.ts) para ver as alterações que eu promovi dentro do arquivo lista-de-tarefas.component.ts. Vale destacar que o arquivo lista-de-tarefas.component.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo lista-de-tarefas.component.ts, vale destacar que:
+
+* O decorator @Component indica que a classe ListaDeTarefasComponent é um componente. Dentro do referido decorator estão definidos o seletor do componente, as dependências que devem ser importadas para o template do componente, o local onde está salvo o arquivo HTML correspondente ao template do componente e o local onde está salvo o arquivo CSS correspondente aos estilos do componente.
+* A classe RouterLink é importada para o template do componente ListaDeTarefasComponent. Desse modo, dentro do referido template, eu posso usar a propriedade routerLink que pertence à classe RouterLink.
+* A classe CommonModule é importada para o template do componente ListaDeTarefasComponent. Desse modo, dentro do referido template, eu posso usar a diretiva ngFor.
+* Eu utilizei o método inject para realizar a injeção de dependência. Desse modo, o Angular injetará a dependência, que nesse caso é o serviço TarefaService, dentro da classe ListaDeTarefasComponent.
+* Dentro do método constructor, eu fiz uma chamada para o método buscarTodasAsTarefas. Desse modo, o método buscarTodasAsTarefas entrará em ação assim que o componente ListaDeTarefasComponent for instanciado.
+* Eu escrevi comentários dentro dos métodos do componente ListaDeTarefasComponent. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/0afce5745acfa25902fcdc5287ba8714dbee76c5) para ver o commit relacionado com a alteração do arquivo lista-de-tarefas.component.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.14: Arquivo lista-de-tarefas.component.html
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta lista-de-tarefas. Nessa última pasta, eu acessei o arquivo lista-de-tarefas.component.html.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/lista-de-tarefas/lista-de-tarefas.component.html) para ver as alterações que eu promovi dentro do arquivo lista-de-tarefas.component.html. Vale destacar que o arquivo lista-de-tarefas.component.html está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo lista-de-tarefas.component.html, vale destacar que:
+
+* O arquivo lista-de-tarefas.component.html é o template do componente ListaDeTarefasComponent. Isso significa que o referido template será exibido como o conteúdo principal da URL http://localhost:4200.
+* Eu adicionei um parágrafo que informa a quantidade de tarefas contidas na lista de tarefas. Essa quantidade é informada pela propriedade numeroDeTarefas.
+* A propriedade routerLink que pertence à classe RouterLink permite que o usuário navegue para as diferentes URLs do front-end da aplicação web.
+* Por meio da diretiva ngFor, eu indiquei que cada tarefa salva no banco de dados corresponderá a um item da lista de tarefas.
+* Cada item da lista de tarefas contém a descrição da tarefa e alguns botões que permitem que o usuário realize algumas ações sobre a tarefa.
+* Por meio de @if e @else, eu indiquei que, caso a tarefa não esteja marcada como concluída, será exibido o botão Marcar como concluída e o botão Editar. Caso a tarefa esteja marcada como concluída, será exibido o botão Marcar como não concluída. O botão Excluir será exibido em ambos os casos.
+* Eu indiquei que, quando o usuário clicar no botão Marcar como concluída, deverá ser chamado o método atualizarPropriedadeConcluida. O mesmo acontecerá quando o usuário clicar no botão Marcar como não concluída.
+* Eu indiquei que, quando uma tarefa estiver marcada como concluída, a tag li que contém a referida tarefa deverá possuir a classe riscada.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/87fa5840dc0d877b01a8267e8c01b9690f1fc602) para ver o commit relacionado com a alteração do arquivo lista-de-tarefas.component.html dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.15: Arquivo lista-de-tarefas.component.css
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta lista-de-tarefas. Nessa última pasta, eu acessei o arquivo lista-de-tarefas.component.css.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/lista-de-tarefas/lista-de-tarefas.component.css) para ver as alterações que eu promovi dentro do arquivo lista-de-tarefas.component.css. Vale destacar que o arquivo lista-de-tarefas.component.css está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo lista-de-tarefas.component.css, vale destacar que:
+
+* Para cada item da lista de tarefas, eu indiquei que devem ficar na mesma linha a descrição da tarefa e os botões que permitem que o usuário realize ações sobre a tarefa. Eu também indiquei que cada item da lista de tarefas deve ter a borda da cor preta e com espessura de 2 pixels. Além disso, para cada item da lista de tarefas, eu indiquei que será de 20 pixels a distância entre seu conteúdo e suas bordas.
+* Eu indiquei que, quando uma tarefa estiver marcada como concluída, o item que corresponde à referida tarefa deverá ter sua borda da cor cinza. Além disso, a descrição dessa tarefa deverá ser riscada com um traço.
+* Eu indiquei as cores dos botões que fazem parte do conteúdo principal da URL http://localhost:4200.
+* Através de media queries, eu apliquei o design responsivo. Desse modo, eu fiz com que o conteúdo principal da URL http://localhost:4200 se adaptasse a diferentes resoluções de tela.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/4499888d911824de2aa837eea5831ed74eb87859) para ver o commit relacionado com a alteração do arquivo lista-de-tarefas.component.css dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.16: Arquivo adicionar-tarefa.component.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta adicionar-tarefa. Nessa última pasta, eu acessei o arquivo adicionar-tarefa.component.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/adicionar-tarefa/adicionar-tarefa.component.ts) para ver as alterações que eu promovi dentro do arquivo adicionar-tarefa.component.ts. Vale destacar que o arquivo adicionar-tarefa.component.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo adicionar-tarefa.component.ts, vale destacar que:
+
+* O decorator @Component indica que a classe AdicionarTarefaComponent é um componente. Dentro do referido decorator estão definidos o seletor do componente, as dependências que devem ser importadas para o template do componente, o local onde está salvo o arquivo HTML correspondente ao template do componente e o local onde está salvo o arquivo CSS correspondente aos estilos do componente.
+* A classe FormsModule é importada para o template do componente AdicionarTarefaComponent. Desse modo, dentro do referido template, eu posso contar com recursos do Angular que me permitem vincular dados a um formulário.
+* Por meio do método inject, eu injetei o serviço TarefaService e a classe Router dentro da classe AdicionarTarefaComponent. A classe Router me permite navegar entre as diferentes URLs do front-end da aplicação web.
+* Eu escrevi comentários dentro dos métodos do componente AdicionarTarefaComponent. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/d9c40520e821280b8b68fe5aab10b05277e3f309) para ver o commit relacionado com a alteração do arquivo adicionar-tarefa.component.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.17: Arquivo adicionar-tarefa.component.html
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta adicionar-tarefa. Nessa última pasta, eu acessei o arquivo adicionar-tarefa.component.html.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/adicionar-tarefa/adicionar-tarefa.component.html) para ver as alterações que eu promovi dentro do arquivo adicionar-tarefa.component.html. Vale destacar que o arquivo adicionar-tarefa.component.html está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo adicionar-tarefa.component.html, vale destacar que:
+
+* O arquivo adicionar-tarefa.component.html é o template do componente AdicionarTarefaComponent. Isso significa que o referido template será exibido como o conteúdo principal da URL http://localhost:4200/adicionar-tarefa.
+* Eu criei um formulário composto basicamente por um campo input e pelo botão Confirmar. Dentro do campo input mencionado, o usuário deve escrever a descrição da tarefa que ele deseja adicionar na lista de tarefas.
+* Por meio da diretiva ngModel que pertence à classe FormsModule, eu vinculei o valor do campo input à propriedade descrição que pertence à propriedade tarefa do componente AdicionarTarefaComponent. Desse modo, tudo o que for digitado dentro do campo input será passado para a propriedade descrição que pertence à propriedade tarefa do componente AdicionarTarefaComponent.
+* Eu indiquei que, quando o usuário clicar no botão Confirmar, deverá ser chamado o método adicionarTarefa.
+* Eu adicionei uma validação ao campo input, indicando que o preenchimento do referido campo é obrigatório. Além disso, eu indiquei que o campo input deve conter, no mínimo, 3 caracteres e, no máximo, 25 caracteres.
+* Eu indiquei que, caso o campo input não seja alterado ou caso ele não apresente erros de validação, a mensagem de alerta deverá ficar oculta.
+* Eu indiquei que, caso o campo input não seja alterado ou caso ele apresente erros de validação, o botão Confirmar deverá ser desabilitado.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/769a42d82d7b8c3fe5f98dea1357ecf9862aca50) para ver o commit relacionado com a alteração do arquivo adicionar-tarefa.component.html dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.18: Arquivo adicionar-tarefa.component.css
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta adicionar-tarefa. Nessa última pasta, eu acessei o arquivo adicionar-tarefa.component.css.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/adicionar-tarefa/adicionar-tarefa.component.css) para ver as alterações que eu promovi dentro do arquivo adicionar-tarefa.component.css. Vale destacar que o arquivo adicionar-tarefa.component.css está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo adicionar-tarefa.component.css, vale destacar que:
+
+* Eu indiquei que o campo input deverá ter uma borda sólida e com espessura de 1 pixel. Além disso, será de 10 pixels a distância entre o conteúdo do campo input e as bordas desse mesmo campo.
+* Através de media queries, eu apliquei o design responsivo. Desse modo, eu fiz com que o conteúdo principal da URL http://localhost:4200/adicionar-tarefa se adaptasse a diferentes resoluções de tela.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/350ac525d3c72998d0fee0934db7eea5b3f072c6) para ver o commit relacionado com a alteração do arquivo adicionar-tarefa.component.css dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.19: Arquivo editar-tarefa.component.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta editar-tarefa. Nessa última pasta, eu acessei o arquivo editar-tarefa.component.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/editar-tarefa/editar-tarefa.component.ts) para ver as alterações que eu promovi dentro do arquivo editar-tarefa.component.ts. Vale destacar que o arquivo editar-tarefa.component.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo editar-tarefa.component.ts, vale destacar que:
+
+* O decorator @Component indica que a classe EditarTarefaComponent é um componente. Dentro do referido decorator estão definidos o seletor do componente, as dependências que devem ser importadas para o template do componente, o local onde está salvo o arquivo HTML correspondente ao template do componente e o local onde está salvo o arquivo CSS correspondente aos estilos do componente.
+* A classe FormsModule é importada para o template do componente EditarTarefaComponent. Desse modo, dentro do referido template, eu posso contar com recursos do Angular que me permitem vincular dados a um formulário.
+* Por meio do método inject, eu injetei o serviço TarefaService, a classe Router e a classe ActivatedRoute dentro da classe EditarTarefaComponent. A classe ActivatedRoute me permite lidar com informações relacionadas à atual URL que foi acessada pelo usuário.
+* Dentro do método constructor, eu fiz uma chamada para o método buscarTarefaPeloId. Desse modo, o método buscarTarefaPeloId entrará em ação assim que o componente EditarTarefaComponent for instanciado.
+* Eu escrevi comentários dentro dos métodos do componente EditarTarefaComponent. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/55dcc4e9f3a3121c02da9eff75b24d6494589f83) para ver o commit relacionado com a alteração do arquivo editar-tarefa.component.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.20: Arquivo editar-tarefa.component.html
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta editar-tarefa. Nessa última pasta, eu acessei o arquivo editar-tarefa.component.html.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/editar-tarefa/editar-tarefa.component.html) para ver as alterações que eu promovi dentro do arquivo editar-tarefa.component.html. Vale destacar que o arquivo editar-tarefa.component.html está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo editar-tarefa.component.html, vale destacar que:
+
+* O arquivo editar-tarefa.component.html é o template do componente EditarTarefaComponent. Isso significa que o referido template será exibido como o conteúdo principal da URL que segue o modelo http://localhost:4200/editar-tarefa/id. Na prática, o trecho id corresponde a um número que representa o id de uma determinada tarefa.
+* Eu criei um formulário composto basicamente por um campo input e pelo botão Confirmar. Dentro do campo input mencionado, o usuário deve escrever a nova descrição da tarefa que ele deseja editar.
+* Por meio da diretiva ngModel que pertence à classe FormsModule, eu vinculei o valor do campo input à propriedade descrição que pertence à propriedade tarefa do componente EditarTarefaComponent. Desse modo, tudo o que for digitado dentro do campo input será passado para a propriedade descrição que pertence à propriedade tarefa do componente EditarTarefaComponent. Cabe ressaltar que, assim que é instanciado, o componente EditarTarefaComponent busca a tarefa a ser editada. Isso faz com que o campo input já venha preenchido com a última descrição que foi salva para a tarefa a ser editada.
+* Eu indiquei que, quando o usuário clicar no botão Confirmar, deverá ser chamado o método editarTarefa.
+* Eu adicionei uma validação ao campo input, indicando que o preenchimento do referido campo é obrigatório. Além disso, eu indiquei que o campo input deve conter, no mínimo, 3 caracteres e, no máximo, 25 caracteres.
+* Eu indiquei que, caso o campo input não seja alterado ou caso ele não apresente erros de validação, a mensagem de alerta deverá ficar oculta.
+* Eu indiquei que, caso o campo input não seja alterado ou caso ele apresente erros de validação, o botão Confirmar deverá ser desabilitado.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/dc67664cd027a221f3d72dfd8c557f31cc9176de) para ver o commit relacionado com a alteração do arquivo editar-tarefa.component.html dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.21: Arquivo editar-tarefa.component.css
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta editar-tarefa. Nessa última pasta, eu acessei o arquivo editar-tarefa.component.css.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/editar-tarefa/editar-tarefa.component.css) para ver as alterações que eu promovi dentro do arquivo editar-tarefa.component.css. Vale destacar que o arquivo editar-tarefa.component.css está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo editar-tarefa.component.css, vale destacar que:
+
+* Eu indiquei que o campo input deverá ter uma borda sólida e com espessura de 1 pixel. Além disso, será de 10 pixels a distância entre o conteúdo do campo input e as bordas desse mesmo campo.
+* Através de media queries, eu apliquei o design responsivo. Desse modo, eu fiz com que o conteúdo principal da URL que segue o modelo http://localhost:4200/editar-tarefa/id se adaptasse a diferentes resoluções de tela.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/6990555d89fcda8d9eb7ce44c8f8590f9dfa8ad4) para ver o commit relacionado com a alteração do arquivo editar-tarefa.component.css dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.22: Arquivo excluir-tarefa.component.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta excluir-tarefa. Nessa última pasta, eu acessei o arquivo excluir-tarefa.component.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/excluir-tarefa/excluir-tarefa.component.ts) para ver as alterações que eu promovi dentro do arquivo excluir-tarefa.component.ts. Vale destacar que o arquivo excluir-tarefa.component.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo excluir-tarefa.component.ts, vale destacar que:
+
+* O decorator @Component indica que a classe ExcluirTarefaComponent é um componente. Dentro do referido decorator estão definidos o seletor do componente, as dependências que devem ser importadas para o template do componente, o local onde está salvo o arquivo HTML correspondente ao template do componente e o local onde está salvo o arquivo CSS correspondente aos estilos do componente.
+* Por meio do método inject, eu injetei o serviço TarefaService, a classe Router e a classe ActivatedRoute dentro da classe ExcluirTarefaComponent. Os papéis das classes Router e ActivatedRoute já foram explicados em tópicos anteriores.
+* Dentro do método constructor, eu fiz uma chamada para o método buscarTarefaPeloId. Desse modo, o método buscarTarefaPeloId entrará em ação assim que o componente ExcluirTarefaComponent for instanciado.
+* Eu escrevi comentários dentro dos métodos do componente ExcluirTarefaComponent. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/4c1b6dfe27e7a86f77a886231d983aa7eed2f5b4) para ver o commit relacionado com a alteração do arquivo excluir-tarefa.component.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.23: Arquivo excluir-tarefa.component.html
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta excluir-tarefa. Nessa última pasta, eu acessei o arquivo excluir-tarefa.component.html.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/excluir-tarefa/excluir-tarefa.component.html) para ver as alterações que eu promovi dentro do arquivo excluir-tarefa.component.html. Vale destacar que o arquivo excluir-tarefa.component.html está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo excluir-tarefa.component.html, vale destacar que:
+
+* O arquivo excluir-tarefa.component.html é o template do componente ExcluirTarefaComponent. Isso significa que o referido template será exibido como o conteúdo principal da URL que segue o modelo http://localhost:4200/excluir-tarefa/id. Na prática, o trecho id corresponde a um número que representa o id de uma determinada tarefa.
+* A URL que segue o modelo http://localhost:4200/excluir-tarefa/id é composta basicamente por uma mensagem e pelo botão Confirmar. Cabe ressaltar que, assim que é instanciado, o componente ExcluirTarefaComponent busca a tarefa a ser excluída. Isso faz com que a referida mensagem já apresente a descrição da tarefa a ser excluída.
+* Eu indiquei que, quando o usuário clicar no botão Confirmar, deverá ser chamado o método excluirTarefa.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/b42fd4687c4ae5cd8dee294fcf7e542b8d145ebd) para ver o commit relacionado com a alteração do arquivo excluir-tarefa.component.html dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 5.24: Arquivo excluir-tarefa.component.css
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta excluir-tarefa. Nessa última pasta, eu acessei o arquivo excluir-tarefa.component.css.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/excluir-tarefa/excluir-tarefa.component.css) para ver as alterações que eu promovi dentro do arquivo excluir-tarefa.component.css. Vale destacar que o arquivo excluir-tarefa.component.css está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/ee822f04e6f151fe358acd00e62d85fcfdc71499) para ver o commit relacionado com a alteração do arquivo excluir-tarefa.component.css dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+## Tópico 6: Testes unitários para validar o front-end da aplicação web
+
+Os subtópicos seguintes relatam as etapas que eu segui para escrever os testes unitários que devem validar o front-end da aplicação web do projeto Lista de tarefas.
+
+### Subtópico 6.1: Arquivo app.component.spec.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Essa última pasta já contava com o arquivo app.component.spec.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/app.component.spec.ts) para ver as alterações que eu promovi dentro do arquivo app.component.spec.ts. Vale destacar que o arquivo app.component.spec.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo app.component.spec.ts, vale destacar que:
+
+* O arquivo app.component.spec.ts contém os testes unitários que devem validar o componente AppComponent.
+* A função decribe serve para criar um grupo de especificações. Cada uma dessas especificações é representada pela função it. A função it contém uma ou mais expectativas que testam o código que foi fornecido.
+* A função beforeEach evita a repetição de código, pois permite que as configurações contidas dentro da referida função sejam executadas antes de cada função it.
+* Dentro da função beforeEach, eu chamei o método configureTestingModule do TestBed. Desse modo, eu pude importar o componente AppComponent. Depois, eu chamei o método compileComponents do TestBed. O método compileComponents compila todos os componentes configurados.
+* Eu escrevi comentários dentro das funções contidas dentro da função describe. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/63c3a9be9e7627a1abbaac03f15683446866f91c) para ver o commit relacionado com a alteração do arquivo app.component.spec.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 6.2: Arquivo tarefa.spec.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta models. Nessa última pasta, eu acessei o arquivo tarefa.spec.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/models/tarefa.spec.ts) para ver as alterações que eu promovi dentro do arquivo tarefa.spec.ts. Vale destacar que o arquivo tarefa.spec.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo tarefa.spec.ts, vale destacar que:
+
+* O arquivo tarefa.spec.ts contém o teste unitário que deve validar a classe Tarefa.
+* Os papéis da função describe e da função it já foram explicados.
+* Eu escrevi um comentário dentro da função it contida dentro da função describe. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/2ea206a2e305c7bfdd0f6e312850d847bb45b555) para ver o commit relacionado com a alteração do arquivo tarefa.spec.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 6.3: Arquivo db.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Nessa última pasta, eu criei a pasta db. Na pasta db, eu criei o arquivo db.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/db/db.ts) para ver as alterações que eu promovi dentro do arquivo db.ts. Vale destacar que o arquivo db.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo db.ts, vale destacar que:
+
+* Dentro do arquivo db.ts, eu exporto uma constante chamada mockListaDeTarefas. Essa constante é uma lista que contém cinco tarefas. Desse modo, a constante mockListaDeTarefas simula uma lista de tarefas armazenada em um banco de dados.
+* A constante mockListaDeTarefas será utilizada pelo mock do serviço TarefaService.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/c550bf90b4caf722aaff16ae5c6156f340eef208) para ver o commit relacionado com a alteração do arquivo db.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 6.4: Arquivo mocktarefaservice.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Nessa última pasta, eu criei a pasta mocks. Na pasta mocks, eu criei o arquivo mocktarefaservice.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/mocks/mocktarefaservice.ts) para ver as alterações que eu promovi dentro do arquivo mocktarefaservice.ts. Vale destacar que o arquivo mocktarefaservice.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo mocktarefaservice.ts, vale destacar que:
+
+* Eu criei a classe MockTarefaService. O papel dessa classe é servir como mock do serviço TarefaService, ou seja, a classe MockTarefaService deve simular o comportamento dos métodos do serviço TarefaService que se comunicam com a API REST.
+* Eu precisei da constante mockListaDeTarefas porque ela me ajuda a simular o comportamento dos métodos do serviço TarefaService que buscam dados.
+* Eu escrevi comentários dentro dos métodos contidos dentro da classe MockTarefaService. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/96b52ca7a272f45afc85883fb6de923dfdca2a6e) para ver o commit relacionado com a alteração do arquivo mocktarefaservice.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 6.5: Arquivo tarefa.service.spec.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta services. Nessa última pasta, eu acessei o arquivo tarefa.service.spec.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/services/tarefa.service.spec.ts) para ver as alterações que eu promovi dentro do arquivo tarefa.service.spec.ts. Vale destacar que o arquivo tarefa.service.spec.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo tarefa.service.spec.ts, vale destacar que:
+
+* O arquivo tarefa.service.spec.ts contém os testes unitários que devem validar o serviço TarefaService.
+* Os papéis da função describe, da função it e da função beforeEach já foram explicados.
+* Dentro da função beforeEach, eu chamei o método configureTestingModule do TestBed. Desse modo, eu pude adicionar como providers o serviço TarefaService, a função provideHttpClient e a função provideHttpClientTesting. A função provideHttpClient e a função provideHttpClientTesting configuram o serviço HttpClient para usar um back-end de teste.
+* A função afterEach evita a repetição de código, pois permite que as configurações contidas dentro da referida função sejam executadas depois de cada função it.
+* Eu escrevi comentários dentro das funções contidas dentro da função describe. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/6ca5a5e58a4a9385f905e98645713190d96fe8a4) para ver o commit relacionado com a alteração do arquivo tarefa.service.spec.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 6.6: Arquivo lista-de-tarefas.component.spec.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta lista-de-tarefas. Nessa última pasta, eu acessei o arquivo lista-de-tarefas.component.spec.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/lista-de-tarefas/lista-de-tarefas.component.spec.ts) para ver as alterações que eu promovi dentro do arquivo lista-de-tarefas.component.spec.ts. Vale destacar que o arquivo lista-de-tarefas.component.spec.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo lista-de-tarefas.component.spec.ts, vale destacar que:
+
+* O arquivo lista-de-tarefas.component.spec.ts contém os testes unitários que devem validar o componente ListaDeTarefasComponent.
+* Os papéis da função describe, da função it e da função beforeEach já foram explicados.
+* Dentro da função beforeEach, eu chamei o método configureTestingModule do TestBed. Desse modo, eu pude importar o componente ListaDeTarefasComponent, além de adicionar diversos providers, como o provideRouter. A adição do provideRouter foi necessária, pois o usuário pode navegar para outros componentes clicando em botões do componente ListaDeTarefasComponent.
+* Ainda dentro do método configureTestingModule do TestBed, eu indiquei que o componente ListaDeTarefasComponent deve usar MockTarefaService no lugar de TarefaService.
+* Eu escrevi comentários dentro das funções contidas dentro da função describe. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/4913fdcdfe258466cedebf917f0c7df854fdfd58) para ver o commit relacionado com a alteração do arquivo lista-de-tarefas.component.spec.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 6.7: Arquivo adicionar-tarefa.component.spec.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta adicionar-tarefa. Nessa última pasta, eu acessei o arquivo adicionar-tarefa.component.spec.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/adicionar-tarefa/adicionar-tarefa.component.spec.ts) para ver as alterações que eu promovi dentro do arquivo adicionar-tarefa.component.spec.ts. Vale destacar que o arquivo adicionar-tarefa.component.spec.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo adicionar-tarefa.component.spec.ts, vale destacar que:
+
+* O arquivo adicionar-tarefa.component.spec.ts contém os testes unitários que devem validar o componente AdicionarTarefaComponent.
+* Os papéis da função describe, da função it e da função beforeEach já foram explicados.
+* Dentro da função beforeEach, eu chamei o método configureTestingModule do TestBed. Desse modo, eu pude importar o componente AdicionarTarefaComponent.
+* Eu escrevi comentários dentro das funções contidas dentro da função describe. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/027a8f8f9ec7e989b1d4b85fd4c6d5c187dda3fc) para ver o commit relacionado com a alteração do arquivo adicionar-tarefa.component.spec.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 6.8: Arquivo editar-tarefa.component.spec.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta editar-tarefa. Nessa última pasta, eu acessei o arquivo editar-tarefa.component.spec.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/editar-tarefa/editar-tarefa.component.spec.ts) para ver as alterações que eu promovi dentro do arquivo editar-tarefa.component.spec.ts. Vale destacar que o arquivo editar-tarefa.component.spec.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo editar-tarefa.component.spec.ts, vale destacar que:
+
+* O arquivo editar-tarefa.component.spec.ts contém os testes unitários que devem validar o componente EditarTarefaComponent.
+* Os papéis da função describe, da função it e da função beforeEach já foram explicados.
+* Dentro do método configureTestingModule do TestBed, eu indiquei que o componente EditarTarefaComponent deve usar MockTarefaService no lugar de TarefaService.
+* Eu escrevi comentários dentro das funções contidas dentro da função describe. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/de512ac187f1077eeaf6f28d11fd64b1452dac4a) para ver o commit relacionado com a alteração do arquivo editar-tarefa.component.spec.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 6.9: Arquivo excluir-tarefa.component.spec.ts
+
+Dentro da pasta projeto-lista-de-tarefas-frontend, eu fui até a pasta src e, depois, eu fui até a pasta app. Em seguida, eu fui até a pasta pages e, depois, eu fui até a pasta excluir-tarefa. Nessa última pasta, eu acessei o arquivo excluir-tarefa.component.spec.ts.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/blob/main/src/app/pages/excluir-tarefa/excluir-tarefa.component.spec.ts) para ver as alterações que eu promovi dentro do arquivo excluir-tarefa.component.spec.ts. Vale destacar que o arquivo excluir-tarefa.component.spec.ts está hospedado no meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+Sobre o arquivo excluir-tarefa.component.spec.ts, vale destacar que:
+
+* O arquivo excluir-tarefa.component.spec.ts contém os testes unitários que devem validar o componente ExcluirTarefaComponent.
+* Os papéis da função describe, da função it e da função beforeEach já foram explicados.
+* Dentro do método configureTestingModule do TestBed, eu indiquei que o componente ExcluirTarefaComponent deve usar MockTarefaService no lugar de TarefaService.
+* Eu escrevi comentários dentro das funções contidas dentro da função describe. Fiz isso para que o código se torne mais compreensível.
+
+[Clique aqui](https://github.com/lorenzofernandesaguiar/projeto-lista-de-tarefas-frontend/commit/3eb5298ba15125d278edb73821469b9ca6ae27a8) para ver o commit relacionado com a alteração do arquivo excluir-tarefa.component.spec.ts dentro do meu repositório chamado projeto-lista-de-tarefas-frontend.
+
+### Subtópico 6.10: Rodando os testes unitários para validar o front-end da aplicação web
+
+Eu abri um terminal integrado dentro do Visual Studio Code e digitei o comando ng test. Feito isso, os testes unitários escritos ao longo dos tópicos anteriores começaram a rodar.
 
 Todos os testes obtiveram sucesso, conforme pode ser visto no relatório de testes abaixo.
