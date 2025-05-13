@@ -62,6 +62,7 @@ Vale ressaltar que, por questões de organização, eu dividi o presente texto e
     * Subtópico 6.8: Arquivo editar-tarefa.component.spec.ts
     * Subtópico 6.9: Arquivo excluir-tarefa.component.spec.ts
     * Subtópico 6.10: Rodando os testes unitários para validar o front-end da aplicação web
+* Tópico 7: Utilizando a aplicação web
 
 ## Tópico 1: Levantamento de requisitos
 
@@ -796,3 +797,103 @@ Sobre o arquivo excluir-tarefa.component.spec.ts, vale destacar que:
 Eu abri um terminal integrado dentro do Visual Studio Code e digitei o comando ng test. Feito isso, os testes unitários escritos ao longo dos tópicos anteriores começaram a rodar.
 
 Todos os testes obtiveram sucesso, conforme pode ser visto no relatório de testes abaixo.
+
+![Essa imagem mostra que foram bem sucedidos os testes unitários que devem validar o front-end da aplicação web](https://github.com/user-attachments/assets/4fda791a-5665-4b6f-9cc4-60a94f5b61a7)
+
+## Tópico 7: Utilizando a aplicação web
+
+Primeiramente, eu comecei a rodar a API REST do projeto Lista de tarefas. Para isso, eu, dentro do meu workspace do Spring Tool Suite, tomei providências para que a API REST do projeto Lista de tarefas fosse rodada com o perfil local.
+
+A imagem abaixo mostra como ficou o console do Spring Tool Suite depois que eu rodei a API REST do projeto Lista de tarefas.
+
+![Essa imagem mostra como ficou o console do Spring Tool Suite depois que eu rodei a API REST do projeto Lista de tarefas](https://github.com/user-attachments/assets/8b0ac458-3511-43aa-ab18-db5232fb3ebe)
+
+Depois, eu comecei a rodar o front-end da aplicação web do projeto Lista de tarefas. Para isso, eu, dentro do Visual Studio Code, abri um terminal integrado e digitei o comando ng serve.
+
+A imagem abaixo mostra como ficou o terminal do Visual Studio Code depois que eu rodei o front-end da aplicação web do projeto Lista de tarefas.
+
+![Essa imagem mostra como ficou o terminal do Visual Studio Code depois que eu rodei o front-end da aplicação web do projeto Lista de tarefas](https://github.com/user-attachments/assets/d572c7db-6b72-4700-973d-e67e86b86aec)
+
+Dentro de um navegador, eu visitei o endereço http://localhost:4200. Esse endereço diz respeito à página principal da aplicação web. A imagem abaixo mostra como se encontrava a página web correspondente ao endereço http://localhost:4200.
+
+![Essa imagem  mostra como se encontrava a página web correspondente ao endereço http://localhost:4200](https://github.com/user-attachments/assets/6df25475-3b15-4ea6-b450-e2889b6a3466)
+
+Eu também entrei pgAdmin a fim de verificar como se encontrava tabela tarefas correspondente ao banco de dados que eu criei dentro do PostgreSQL. A imagem abaixo mostra como se encontrava a referida tabela.
+
+![Essa imagem  mostra como se encontrava a tabela tarefas correspondente ao banco de dados que eu criei dentro do PostgreSQL](https://github.com/user-attachments/assets/07cc830e-99dd-42d1-89ca-2c38a21262f5)
+
+No navegador, eu estava dentro da página principal da aplicação web. Então, eu cliquei no botão Adicionar tarefa e fui redirecionado para a página de adição de tarefa, a qual se localiza no endereço http://localhost:4200/adicionar-tarefa. Eu tentei adicionar uma tarefa cuja descrição continha apenas dois caracteres. Por causa disso, a aplicação web me mostrou uma mensagem de alerta, conforme pode ser visto na imagem abaixo.
+
+![Essa imagem mostra a mensagem de alerta que foi exibida pela página de adição de tarefa da aplicação web](https://github.com/user-attachments/assets/a2856060-4f92-43ba-b9fe-3f3bb454dbe3)
+
+Eu tomei providências para que eu pudesse ver como a página de adição de tarefa se comporta quando visualizada em uma tela com tamanho reduzido. Isso é mostrado na imagem abaixo.
+
+![Essa imagem mostra a página de adição de tarefa visualizada em uma tela com tamanho reduzido](https://github.com/user-attachments/assets/f5bf7bcf-f2e0-435d-ba70-daccca37365a)
+
+Na página de adição de tarefa, eu escrevi no campo input a descrição Agendar reunião. Isso pode ser visto na imagem abaixo.
+
+![Essa imagem mostra a página de adição de tarefa depois que eu escrevi no campo input a descrição Agendar reunião](https://github.com/user-attachments/assets/a8cce059-5dd1-48a5-9196-a60c32ecda7b)
+
+Eu cliquei no botão Confirmar. Assim, eu fui redirecionado para a página principal, a qual passou a contar com a tarefa cuja descrição é Agendar reunião. Isso pode ser observado na imagem abaixo.
+
+![Essa imagem mostra a página principal com a tarefa cuja descrição é Agendar reunião](https://github.com/user-attachments/assets/d421f7f9-a25a-4418-b721-1c7400f3395d)
+
+A tarefa cuja descrição é Agendar reunião foi incluída com sucesso na tabela tarefas. Isso pode ser visto na imagem abaixo.
+
+![Essa imagem mostra a tarefa cuja descrição é Agendar reunião incluída na tabela tarefas](https://github.com/user-attachments/assets/b3560c6e-db40-449c-a26d-3167c7ff5198)
+
+Eu adicionei outras duas tarefas, conforme pode ser visto na imagem abaixo.
+
+![Essa imagem mostra as outras duas tarefas que eu adicionei](https://github.com/user-attachments/assets/2f0ef5f4-4fe2-4112-9786-1676ea3108f8)
+
+Essas duas tarefas foram incluídas com sucesso na tabela tarefas. Isso pode ser visto na imagem abaixo.
+
+![Essa imagem mostra que as outras duas tarefas foram incluídas com sucesso na tabela tarefas](https://github.com/user-attachments/assets/86a9bc78-0948-4137-b696-de4febf5dc16)
+
+Eu marquei como concluída a tarefa cuja descrição é Ler um livro. Isso pode ser visto na imagem abaixo.
+
+![Essa imagem mostra que foi marcada como concluída a tarefa cuja descrição é Ler um livro](https://github.com/user-attachments/assets/b2146414-888c-43a2-b1d5-75cd81c5e9f2)
+
+Dentro da tabela tarefas, houve alteração no campo concluida para a tarefa cuja descrição é Ler um livro. Isso pode ser visto na imagem abaixo.
+
+![Essa imagem mostra que, dentro da tabela tarefas, houve alteração no campo concluida para a tarefa cuja descrição é Ler um livro](https://github.com/user-attachments/assets/f8ac278b-725b-4d8e-ba06-704578491ab7)
+
+Eu tomei providências para que eu pudesse ver como a página principal se comporta quando visualizada em uma tela com tamanho reduzido. Isso é mostrado na imagem abaixo.
+
+![Essa imagem mostra a página principal visualizada em uma tela com tamanho reduzido](https://github.com/user-attachments/assets/98f1d6b9-7f9c-42f5-bec8-16ee72186a98)
+
+Em relação à tarefa cuja descrição é Concluir relatório, eu cliquei no botão Editar. Então, eu fui direcionado para a página de edição de tarefa.
+
+![Essa imagem mostra como se encontrava a página de edição de tarefa para a tarefa cuja descrição é Concluir relatório](https://github.com/user-attachments/assets/4341bd50-2303-455d-af31-d2e45a0b0b8f)
+
+Eu editei a tarefa em questão para Concluir relatório hoje. Isso pode ser observado na imagem abaixo.
+
+![Essa imagem mostra como ficou a página edição de tarefa depois que eu editei a tarefa em questão para Concluir relatório hoje](https://github.com/user-attachments/assets/6c1d28b7-47bb-4690-9f1d-b75696813b23)
+
+Eu tomei providências para que eu pudesse ver como a página de edição de tarefa se comporta quando visualizada em uma tela com tamanho reduzido. Isso é mostrado na imagem abaixo.
+
+![Essa imagem mostra a página de edição de tarefa visualizada em uma tela com tamanho reduzido](https://github.com/user-attachments/assets/636bb049-704a-48f6-86f1-99b41eb1d560)
+
+Depois que eu editei a tarefa, eu fui redirecionado para a página principal. O estado da página principal pode ser visto na imagem abaixo.
+
+![Essa imagem mostra como ficou a página principal depois que eu editei uma tarefa para que ela ficasse com a descrição Concluir relatório hoje](https://github.com/user-attachments/assets/3c6ff8ba-ed25-456a-aac3-01df6a2e9666)
+
+Dentro da tabela tarefas, houve alteração no campo descricao para a tarefa cujo idé igual a 3. Isso pode ser visto na imagem abaixo.
+
+![Essa imagem mostra que, dentro da tabela tarefas, houve alteração no campo descricao para a tarefa cujo id é igual a 3](https://github.com/user-attachments/assets/1bab04e3-28dc-4ff4-b8dc-cf3f619c90d7)
+
+Em relação à tarefa cuja descrição é Ler um livro, eu cliquei no botão Excluir. Então,eu fui direcionado para a página de exclusão de tarefa, conforme pode ser visto na imagem abaixo.
+
+![Essa imagem mostra como se encontrava a página de exclusão de tarefa para a tarefa cuja descrição é Ler um livro](https://github.com/user-attachments/assets/a43ebfb2-7b04-4ac5-b2d0-aea6e97b8b6a)
+
+Eu tomei providências para que eu pudesse ver como a página de exclusão de tarefa se comporta quando visualizada em uma tela com tamanho reduzido. Isso é mostrado na imagem abaixo.
+
+![Essa imagem mostra a página de exclusão de tarefa visualizada em uma tela com tamanho reduzido](https://github.com/user-attachments/assets/5bcc6bf6-bf4b-4091-a405-7e55045e7964)
+
+Depois que eu excluí a tarefa cuja descrição é Ler um livro, eu fui redirecionado para a página principal. O estado da página principal pode ser visto na imagem abaixo.
+
+![Essa imagem mostra como ficou a página principal depois que eu excluí a tarefa cuja descrição é Ler um livro](https://github.com/user-attachments/assets/0e88fd5a-e928-462f-8ace-d70d63015ff3)
+
+Houve alteração dentro da tabela tarefas. Foi removido o registro correspondente à tarefa cujo id é igual a 2. Isso pode ser visto na imagem abaixo.
+
+![Essa imagem mostra que, dentro da tabela tarefas, foi removido registro correspondente à tarefa cujo id é igual a 2](https://github.com/user-attachments/assets/c4dcc149-7d57-41e3-9dcf-03254a215c12)
